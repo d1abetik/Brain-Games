@@ -7,11 +7,7 @@ const ranOperator = (massive) => {
 };
 
 // Meet question
-const meetQuest = (name) => {
-  console.log(`Hello, ${name}!`);
-  return;
-};
-
+const meetQuest = (name) => console.log(`Hello, ${name}!`);
 
 // Random Number
 const randomNum = (multi) => {
@@ -22,14 +18,14 @@ const randomNum = (multi) => {
 const numberForQuest = () => {
   const numForRun = randomNum(10);
   return numForRun;
-}
+};
 
 const randomForCalc = () => {
   const firstNum = randomNum(10);
   const secondNum = randomNum(10);
   const operator = ranOperator(['+', '-', '*']);
   return [firstNum, secondNum, operator];
-}
+};
 
 const correctCalc = (num, operator, num2) => {
   const res = eval(num + operator + num2);
@@ -38,15 +34,18 @@ const correctCalc = (num, operator, num2) => {
 
 const whichResult = (nameGame) => {
   switch (nameGame) {
-    case 'brain-even':
-      console.log(`Question: ${numberForQuest()}`);
-      const res = numberForQuest() % 2 === 0 ? 'yes' : 'no';
+    case 'brain-even': {
+      const num = numberForQuest();
+      console.log(`Question: ${num}`);
+      const res = num % 2 === 0 ? 'yes' : 'no';
       return res;
-    case 'brain-calc':
+    }
+    case 'brain-calc': {
       const [num1, num2, operator] = randomForCalc();
       console.log(`Question: ${num1} ${operator} ${num2}`);
       const result = correctCalc(num1, operator, num2).toString();
       return result;
+    }
   }
 };
 
@@ -80,5 +79,5 @@ const app = (game) => {
 };
 
 export {
-  meetQuest, randomNum, ranOperator, app, whichResult
+  meetQuest, randomNum, ranOperator, app, whichResult,
 };
