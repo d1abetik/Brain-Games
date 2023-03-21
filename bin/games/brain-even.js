@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-
+import { app } from '/home/cloudy/hexlet-js/frontend-project-44/bin/src/index.js';
+/*
 const brainEven = () => {
   let semiRes = '';
   const char = readlineSync.question('May I have your name?: ');
@@ -20,5 +21,7 @@ const brainEven = () => {
   }
   return console.log(`Congratulations, ${char}`);
 };
+*/
+app('brain-even');
 
-brainEven();
+//brainEven();

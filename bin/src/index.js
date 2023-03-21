@@ -19,6 +19,11 @@ const randomNum = (multi) => {
   return result;
 };
 
+const numberForQuest = () => {
+  const numForRun = randomNum(10);
+  return numForRun;
+}
+
 const randomForCalc = () => {
   const firstNum = randomNum(10);
   const secondNum = randomNum(10);
@@ -34,12 +39,13 @@ const correctCalc = (num, operator, num2) => {
 const whichResult = (nameGame) => {
   switch (nameGame) {
     case 'brain-even':
-      randomNum(10) % 2 === 0 ? 'yes' : 'no';
-      break;
+      console.log(`Question: ${numberForQuest()}`);
+      const res = numberForQuest() % 2 === 0 ? 'yes' : 'no';
+      return res;
     case 'brain-calc':
       const [num1, num2, operator] = randomForCalc();
       console.log(`Question: ${num1} ${operator} ${num2}`);
-      const result = correctCalc(num1, operator, num2);
+      const result = correctCalc(num1, operator, num2).toString();
       return result;
   }
 };
@@ -63,7 +69,7 @@ const app = (game) => {
   for (let i = 0; i < 3; i += 1) {
     const res = whichResult(game);
     const userAnswer = readlineSync.question('Answer: ');
-    if (Number(userAnswer) === res) {
+    if (userAnswer === res) {
       console.log('Correct!');
     } else {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${res}.`);
