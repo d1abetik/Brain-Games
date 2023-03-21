@@ -46,17 +46,25 @@ const whichResult = (nameGame) => {
       const result = correctCalc(num1, operator, num2).toString();
       return result;
     }
+    default: {
+      return 'sorry!';
+    }
   }
 };
 
 const whichQuestion = (nameGame) => {
   switch (nameGame) {
-    case 'brain-even':
+    case 'brain-even': {
       console.log('Answer "yes" if the number is even, otherwise answer "no".');
       break;
-    case 'brain-calc':
+    }
+    case 'brain-calc': {
       console.log('What is the result of the expression?');
       break;
+    }
+    default: {
+      return 'sorry!';
+    }
   }
 };
 
