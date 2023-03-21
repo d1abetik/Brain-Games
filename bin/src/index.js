@@ -7,38 +7,72 @@ const ranOperator = (massive) => {
 };
 
 // Meet question
-const meetQuest = (message, name) => {
+const meetQuest = (name) => {
   console.log(`Hello, ${name}!`);
-  return message;
+  return;
 };
+
 
 // Random Number
 const randomNum = (multi) => {
-  let result = 0;
-  result = Math.floor(Math.random() * multi);
+  const result = Math.floor(Math.random() * multi);
   return result;
 };
 
-// brain-calc
-const correctNot = (name) => {
-  const oper = ['+', '-', '*'];
+const randomForCalc = () => {
+  const firstNum = randomNum(10);
+  const secondNum = randomNum(10);
+  const operator = ranOperator(['+', '-', '*']);
+  return [firstNum, secondNum, operator];
+}
+
+const correctCalc = (num, operator, num2) => {
+  const res = eval(num + operator + num2);
+  return res;
+};
+
+const whichResult = (nameGame) => {
+  switch (nameGame) {
+    case 'brain-even':
+      randomNum(10) % 2 === 0 ? 'yes' : 'no';
+      break;
+    case 'brain-calc':
+      const [num1, num2, operator] = randomForCalc();
+      console.log(`Question: ${num1} ${operator} ${num2}`);
+      const result = correctCalc(num1, operator, num2);
+      return result;
+  }
+};
+
+const whichQuestion = (nameGame) => {
+  switch (nameGame) {
+    case 'brain-even':
+      console.log('Answer "yes" if the number is even, otherwise answer "no".');
+      break;
+    case 'brain-calc':
+      console.log('What is the result of the expression?');
+      break;
+  }
+};
+
+// Приложение
+const app = (game) => {
+  const char = readlineSync.question('May I have your name?: ');
+  meetQuest(char);
+  whichQuestion(game);
   for (let i = 0; i < 3; i += 1) {
-    const randomOp = ranOperator(oper);
-    const first = randomNum(10);
-    const second = randomNum(10);
-    const result = eval(first + randomOp + second);
-    console.log(`Question: ${first} ${randomOp} ${second}`);
-    const userAns = readlineSync.question('Answer: ');
-    if (Number(userAns) === result) {
+    const res = whichResult(game);
+    const userAnswer = readlineSync.question('Answer: ');
+    if (Number(userAnswer) === res) {
       console.log('Correct!');
     } else {
-      console.log(`${userAns} is wrong answer ;(. Correct answer was ${result}.`);
-      return console.log(`Let's try again, ${name}!`);
+      console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${res}.`);
+      return console.log(`Let's try again, ${char}!`);
     }
   }
-  return console.log(`Congratulations, ${name}`);
+  return console.log(`Congratulations, ${char}`);
 };
 
 export {
-  correctNot, meetQuest, randomNum, ranOperator
+  meetQuest, randomNum, ranOperator, app, whichResult
 };
