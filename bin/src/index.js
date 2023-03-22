@@ -15,8 +15,8 @@ const randomNum = (multi) => {
   return result;
 };
 
-const numberForQuest = () => {
-  const numForRun = randomNum(10);
+const numberForQuest = (multi) => {
+  const numForRun = randomNum(multi);
   return numForRun;
 };
 
@@ -32,19 +32,42 @@ const correctCalc = (num, operator, num2) => {
   return res;
 };
 
+const NOD = (num1, num2) => {
+  let a = num1;
+  let b = num2;
+  let res = 0;
+  while (a % b !== 0 && b % a !== 0) {
+    if (a > b) {
+      a %= b;
+      res = a;
+    } else {
+      b %= a;
+      res = b;
+    }
+  }
+  return res;
+};
+
 const whichResult = (nameGame) => {
   switch (nameGame) {
     case 'brain-even': {
-      const num = numberForQuest();
+      const num = numberForQuest(10);
       console.log(`Question: ${num}`);
       const res = num % 2 === 0 ? 'yes' : 'no';
       return res;
     }
     case 'brain-calc': {
-      const [num1, num2, operator] = randomForCalc();
+      const [num1, num2, operator] = randomForCalc(10);
       console.log(`Question: ${num1} ${operator} ${num2}`);
       const result = correctCalc(num1, operator, num2).toString();
       return result;
+    }
+    case 'brain-gcd': {
+      const num1 = numberForQuest(100);
+      const num2 = numberForQuest(100);
+      console.log(`Question: ${num1}, ${num2}`);
+      const resu = NOD(num1, num2);
+      return resu.toString();
     }
     default: {
       return 'sorry!';
@@ -60,6 +83,10 @@ const whichQuestion = (nameGame) => {
     }
     case 'brain-calc': {
       console.log('What is the result of the expression?');
+      break;
+    }
+    case 'brain-gcd': {
+      console.log('Find the greatest common divisor of given numbers.');
       break;
     }
     default: {
