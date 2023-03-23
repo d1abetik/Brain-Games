@@ -10,30 +10,27 @@ const ranOperator = (massive) => {
 const meetQuest = (name) => console.log(`Hello, ${name}!`);
 
 // Random Number
-const randomNum = (multi) => {
-  const result = Math.floor(Math.random() * multi);
-  return result;
-};
+const randomNum = (multi) => Math.floor(Math.random() * multi);
 
 // Random Number for questions
-const numberForQuest = (multi) => {
-  const numForRun = randomNum(multi);
-  return numForRun;
+const numberForQuest = (multi) => randomNum(multi);
+
+// Double numbers
+const coupleNumbers = (multi) => {
+  const num1 = numberForQuest(multi);
+  const num2 = numberForQuest(multi);
+  return [num1, num2];
 };
 
 // Random for calc game
 const randomForCalc = () => {
-  const firstNum = randomNum(10);
-  const secondNum = randomNum(10);
+  const [firstNum, secondNum] = coupleNumbers(10);
   const operator = ranOperator(['+', '-', '*']);
   return [firstNum, secondNum, operator];
 };
 
 // Good in calc game
-const correctCalc = (num, operator, num2) => {
-  const res = eval(num + operator + num2);
-  return res;
-};
+const correctCalc = (num, operator, num2) => eval(num + operator + num2);
 
 // Random size of line
 const randomSize = (min, max) => {
@@ -77,12 +74,12 @@ const NOD = (num1, num2) => {
   let a = num1;
   let b = num2;
   let res = 0;
-  while (a % b !== 0 && b % a !== 0) {
+  while (a !== b) {
     if (a > b) {
-      a %= b;
+      a -= b;
       res = a;
     } else {
-      b %= a;
+      b -= a;
       res = b;
     }
   }
@@ -90,53 +87,42 @@ const NOD = (num1, num2) => {
 };
 
 const findSimple = (number) => {
-  const num = number;
   const prime = [];
 
-  for (let i = 2; i <= num; i += 1) {
-    if (num % i === 0) {
+  for (let i = 2; i <= number; i += 1) {
+    if (number % i === 0) {
       prime.push(i);
     }
   }
   return prime.length > 1 ? 'no' : 'yes';
 };
 
-// Prograam for app to chose result for games
+// Programm for app to chose result for games
 const whichResult = (nameGame) => {
-  switch (nameGame) {
-    case 'brain-even': {
-      const num = numberForQuest(10);
-      console.log(`Question: ${num}`);
-      const res = num % 2 === 0 ? 'yes' : 'no';
-      return res;
-    }
-    case 'brain-calc': {
-      const [num1, num2, operator] = randomForCalc(10);
-      console.log(`Question: ${num1} ${operator} ${num2}`);
-      const result = correctCalc(num1, operator, num2).toString();
-      return result;
-    }
-    case 'brain-gcd': {
-      const num1 = numberForQuest(100);
-      const num2 = numberForQuest(100);
-      console.log(`Question: ${num1}, ${num2}`);
-      const resu = NOD(num1, num2);
-      return resu.toString();
-    }
-    case 'brain-progression': {
-      const [massive, result] = generateEmpty(generateLine());
-      console.log(`Question: ${massive}`);
-      return result.toString();
-    }
-    case 'brain-prime': {
-      const numSimple = randomSize(2, 30);
-      console.log(`Question: ${numSimple}`);
-      return findSimple(numSimple);
-    }
-    default: {
-      return 'sorry!';
-    }
+  let correctAnswer = 0;
+
+  if (nameGame === 'brain-even') {
+    const num = numberForQuest(10);
+    console.log(`Question: ${num}`);
+    correctAnswer = num % 2 === 0 ? 'yes' : 'no';
+  } else if (nameGame === 'brain-calc') {
+    const [num1, num2, operator] = randomForCalc(10);
+    console.log(`Question: ${num1} ${operator} ${num2}`);
+    correctAnswer = correctCalc(num1, operator, num2).toString();
+  } else if (nameGame === 'brain-gcd') {
+    const [gcdNum1, gcdNum2] = coupleNumbers(100);
+    console.log(`Question: ${gcdNum1}, ${gcdNum2}`);
+    correctAnswer = NOD(gcdNum1, gcdNum2).toString();
+  } else if (nameGame === 'brain-progression') {
+    const [massive, result] = generateEmpty(generateLine());
+    console.log(`Question: ${massive}`);
+    correctAnswer = result.toString();
+  } else if (nameGame === 'brain-prime') {
+    const numSimple = randomSize(2, 30);
+    console.log(`Question: ${numSimple}`);
+    correctAnswer = findSimple(numSimple);
   }
+  return correctAnswer;
 };
 
 // Programm for app to chose question for game
@@ -163,7 +149,8 @@ const whichQuestion = (nameGame) => {
       break;
     }
     default: {
-      return 'sorry!';
+      console.log('aboba');
+      break;
     }
   }
 };
@@ -186,6 +173,4 @@ const app = (game) => {
   return console.log(`Congratulations, ${char}`);
 };
 
-export {
-  meetQuest, randomNum, ranOperator, app, whichResult,
-};
+export default app;
