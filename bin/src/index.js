@@ -15,11 +15,13 @@ const randomNum = (multi) => {
   return result;
 };
 
+// Random Number for questions
 const numberForQuest = (multi) => {
   const numForRun = randomNum(multi);
   return numForRun;
 };
 
+// Random for calc game
 const randomForCalc = () => {
   const firstNum = randomNum(10);
   const secondNum = randomNum(10);
@@ -27,18 +29,19 @@ const randomForCalc = () => {
   return [firstNum, secondNum, operator];
 };
 
+// Good in calc game
 const correctCalc = (num, operator, num2) => {
   const res = eval(num + operator + num2);
   return res;
 };
 
+// Random size of line
 const randomSize = (min, max) => {
   const r = Math.random() * (max - min) + min;
   return Math.floor(r);
 };
 
-// const randomEmpty = numberForQuest(randomSizeOf);
-
+// Generate Line for progression game
 const generateLine = () => {
   let first = numberForQuest(100);
   const randomSizeOf = randomSize(7, 13);
@@ -52,6 +55,7 @@ const generateLine = () => {
   return result;
 };
 
+// Generate Empty slot in progression game
 const generateEmpty = (massive) => {
   const randomEmpty = numberForQuest(massive.length) - 1;
   const result = massive[randomEmpty];
@@ -68,6 +72,7 @@ const generateEmpty = (massive) => {
   return [hiddenMassive, result];
 };
 
+// Mechanics for NOD game
 const NOD = (num1, num2) => {
   let a = num1;
   let b = num2;
@@ -84,6 +89,7 @@ const NOD = (num1, num2) => {
   return res;
 };
 
+// Prograam for app to chose result for games
 const whichResult = (nameGame) => {
   switch (nameGame) {
     case 'brain-even': {
@@ -116,6 +122,7 @@ const whichResult = (nameGame) => {
   }
 };
 
+// Programm for app to chose question for game
 const whichQuestion = (nameGame) => {
   switch (nameGame) {
     case 'brain-even': {
