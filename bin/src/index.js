@@ -32,6 +32,42 @@ const correctCalc = (num, operator, num2) => {
   return res;
 };
 
+const randomSize = (min, max) => {
+  const r = Math.random() * (max - min) + min;
+  return Math.floor(r);
+};
+
+// const randomEmpty = numberForQuest(randomSizeOf);
+
+const generateLine = () => {
+  let first = numberForQuest(100);
+  const randomSizeOf = randomSize(7, 13);
+  const randomRange = randomSize(2, 5);
+  const result = [];
+
+  for (let i = 1; i <= randomSizeOf; i += 1) {
+    first += randomRange;
+    result.push(first);
+  }
+  return result;
+};
+
+const generateEmpty = (massive) => {
+  const randomEmpty = numberForQuest(massive.length) - 1;
+  const result = massive[randomEmpty];
+
+  const hiddenMassive = [];
+
+  for (let i = 0; i < massive.length; i += 1) {
+    if (massive[i] === result) {
+      hiddenMassive.push('..');
+    } else {
+      hiddenMassive.push(massive[i]);
+    }
+  }
+  return [hiddenMassive, result];
+};
+
 const NOD = (num1, num2) => {
   let a = num1;
   let b = num2;
@@ -69,6 +105,11 @@ const whichResult = (nameGame) => {
       const resu = NOD(num1, num2);
       return resu.toString();
     }
+    case 'brain-progression': {
+      const [massive, result] = generateEmpty(generateLine());
+      console.log(`Question: ${massive}`);
+      return result.toString();
+    }
     default: {
       return 'sorry!';
     }
@@ -87,6 +128,10 @@ const whichQuestion = (nameGame) => {
     }
     case 'brain-gcd': {
       console.log('Find the greatest common divisor of given numbers.');
+      break;
+    }
+    case 'brain-progression': {
+      console.log('What number is missing in the progression?');
       break;
     }
     default: {
