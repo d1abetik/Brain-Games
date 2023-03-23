@@ -89,6 +89,18 @@ const NOD = (num1, num2) => {
   return res;
 };
 
+const findSimple = (number) => {
+  const num = number;
+  const prime = [];
+
+  for (let i = 2; i <= num; i += 1) {
+    if (num % i === 0) {
+      prime.push(i);
+    }
+  }
+  return prime.length > 1 ? 'no' : 'yes';
+};
+
 // Prograam for app to chose result for games
 const whichResult = (nameGame) => {
   switch (nameGame) {
@@ -116,6 +128,11 @@ const whichResult = (nameGame) => {
       console.log(`Question: ${massive}`);
       return result.toString();
     }
+    case 'brain-prime': {
+      const numSimple = randomSize(2, 30);
+      console.log(`Question: ${numSimple}`);
+      return findSimple(numSimple);
+    }
     default: {
       return 'sorry!';
     }
@@ -139,6 +156,10 @@ const whichQuestion = (nameGame) => {
     }
     case 'brain-progression': {
       console.log('What number is missing in the progression?');
+      break;
+    }
+    case 'brain-prime': {
+      console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
       break;
     }
     default: {
