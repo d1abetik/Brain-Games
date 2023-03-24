@@ -14,6 +14,9 @@ const NOD = (num1, num2) => {
       res = b;
     }
   }
+  if (num1 === num2) {
+    res = num1;
+  }
   return res;
 };
 
