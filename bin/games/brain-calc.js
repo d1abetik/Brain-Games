@@ -30,7 +30,7 @@ const resultCalc = () => {
   let res = '';
   const [num1, num2, operator] = randomForCalc(10);
   console.log(`Question: ${num1} ${operator} ${num2}`);
-  res = correctCalc(num1, operator, num2).toString();
+  res = correctCalc(num1, operator, num2);
   return res;
 };
 

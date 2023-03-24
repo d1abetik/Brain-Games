@@ -24,7 +24,7 @@ const resultGcd = () => {
   let res = '';
   const [gcdNum1, gcdNum2] = coupleNumbers(100);
   console.log(`Question: ${gcdNum1} ${gcdNum2}`);
-  res = NOD(gcdNum1, gcdNum2).toString();
+  res = NOD(gcdNum1, gcdNum2);
   return res;
 };
 
