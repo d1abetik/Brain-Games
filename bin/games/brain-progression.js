@@ -16,7 +16,7 @@ const generateLine = () => {
 
 // Generate Empty slot in progression game
 const generateEmpty = (massive) => {
-  const randomEmpty = numberForQuest(massive.length - 1);
+  const randomEmpty = numberForQuest(massive.length);
   const result = massive[randomEmpty];
 
   const hiddenMassive = [];
