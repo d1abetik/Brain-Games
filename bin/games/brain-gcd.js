@@ -20,7 +20,7 @@ const NOD = (num1, num2) => {
 const resultGcd = () => {
   let res = '';
   const [gcdNum1, gcdNum2] = coupleNumbers(100);
-  console.log(`Question: ${gcdNum1}, ${gcdNum2}`);
+  console.log(`Question: ${gcdNum1} ${gcdNum2}`);
   res = NOD(gcdNum1, gcdNum2).toString();
   return res;
 }
