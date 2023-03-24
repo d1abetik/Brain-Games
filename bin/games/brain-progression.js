@@ -37,7 +37,7 @@ const resultProgression = () => {
   let stroke = '';
   for (let i = 0; i < massive.length; i += 1) {
     if (i === massive.length - 1) {
-      stroke += `${massive[i]}`
+      stroke += `${massive[i]}`;
     } else {
       stroke += `${massive[i]} `;
     }

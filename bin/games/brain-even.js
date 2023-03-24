@@ -8,6 +8,6 @@ const resultEven = () => {
   console.log(`Question: ${num}`);
   res = num % 2 === 0 ? 'yes' : 'no';
   return res;
-}
+};
 
 export default resultEven;

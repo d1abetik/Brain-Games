@@ -17,6 +17,6 @@ const resultPrime = () => {
   console.log(`Question: ${numSimple}`);
   res = findSimple(numSimple);
   return res;
-}
+};
 
 export default resultPrime;

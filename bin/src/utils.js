@@ -18,5 +18,5 @@ const randomSize = (min, max) => {
 };
 
 export {
-  numberForQuest, coupleNumbers, randomSize, randomNum
-}
+  numberForQuest, coupleNumbers, randomSize, randomNum,
+};

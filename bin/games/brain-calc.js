@@ -14,7 +14,17 @@ const randomForCalc = () => {
 };
 
 // Good in calc game
-const correctCalc = (num, operator, num2) => eval(num + operator + num2);
+const correctCalc = (num, operator, num2) => {
+  let res = 0;
+  if (operator === '*') {
+    res = num * num2;
+  } else if (operator === '+') {
+    res = num + num2;
+  } else if (operator === '-') {
+    res = num - num2;
+  }
+  return res;
+};
 
 const resultCalc = () => {
   let res = '';
@@ -22,6 +32,6 @@ const resultCalc = () => {
   console.log(`Question: ${num1} ${operator} ${num2}`);
   res = correctCalc(num1, operator, num2).toString();
   return res;
-}
+};
 
 export default resultCalc;

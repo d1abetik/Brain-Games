@@ -26,6 +26,6 @@ const resultGcd = () => {
   console.log(`Question: ${gcdNum1} ${gcdNum2}`);
   res = NOD(gcdNum1, gcdNum2).toString();
   return res;
-}
+};
 
 export default resultGcd;
