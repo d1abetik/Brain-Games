@@ -1,128 +1,30 @@
 import readlineSync from 'readline-sync';
-
-// random Operator
-const ranOperator = (massive) => {
-  const ranOper = Math.floor(Math.random() * massive.length);
-  return massive[ranOper];
-};
+import resultCalc from '../games/brain-calc.js';
+import resultProgression from '../games/brain-progression.js';
+import resultGcd from '../games/brain-gcd.js';
+import resultPrime from '../games/brain-prime.js';
+import resultEven from '../games/brain-even.js';
 
 // Meet question
 const meetQuest = (name) => console.log(`Hello, ${name}!`);
 
-// Random Number
-const randomNum = (multi) => Math.floor(Math.random() * multi);
-
-// Random Number for questions
-const numberForQuest = (multi) => randomNum(multi);
-
-// Double numbers
-const coupleNumbers = (multi) => {
-  const num1 = numberForQuest(multi);
-  const num2 = numberForQuest(multi);
-  return [num1, num2];
-};
-
-// Random for calc game
-const randomForCalc = () => {
-  const [firstNum, secondNum] = coupleNumbers(10);
-  const operator = ranOperator(['+', '-', '*']);
-  return [firstNum, secondNum, operator];
-};
-
-// Good in calc game
-const correctCalc = (num, operator, num2) => eval(num + operator + num2);
-
-// Random size of line
-const randomSize = (min, max) => {
-  const r = Math.random() * (max - min) + min;
-  return Math.floor(r);
-};
-
-// Generate Line for progression game
-const generateLine = () => {
-  let first = numberForQuest(100);
-  const randomSizeOf = randomSize(7, 13);
-  const randomRange = randomSize(2, 5);
-  const result = [];
-
-  for (let i = 1; i <= randomSizeOf; i += 1) {
-    first += randomRange;
-    result.push(first);
-  }
-  return result;
-};
-
-// Generate Empty slot in progression game
-const generateEmpty = (massive) => {
-  const randomEmpty = numberForQuest(massive.length) - 1;
-  const result = massive[randomEmpty];
-
-  const hiddenMassive = [];
-
-  for (let i = 0; i < massive.length; i += 1) {
-    if (massive[i] === result) {
-      hiddenMassive.push('..');
-    } else {
-      hiddenMassive.push(massive[i]);
-    }
-  }
-  return [hiddenMassive, result];
-};
-
-// Mechanics for NOD game
-const NOD = (num1, num2) => {
-  let a = num1;
-  let b = num2;
-  let res = 0;
-  while (a !== b) {
-    if (a > b) {
-      a -= b;
-      res = a;
-    } else {
-      b -= a;
-      res = b;
-    }
-  }
-  return res;
-};
-
-const findSimple = (number) => {
-  const prime = [];
-
-  for (let i = 2; i <= number; i += 1) {
-    if (number % i === 0) {
-      prime.push(i);
-    }
-  }
-  return prime.length > 1 ? 'no' : 'yes';
-};
-
 // Programm for app to chose result for games
+
 const whichResult = (nameGame) => {
-  let correctAnswer = 0;
+  let res = '';
 
   if (nameGame === 'brain-even') {
-    const num = numberForQuest(10);
-    console.log(`Question: ${num}`);
-    correctAnswer = num % 2 === 0 ? 'yes' : 'no';
+    res = resultEven();
   } else if (nameGame === 'brain-calc') {
-    const [num1, num2, operator] = randomForCalc(10);
-    console.log(`Question: ${num1} ${operator} ${num2}`);
-    correctAnswer = correctCalc(num1, operator, num2).toString();
+    res = resultCalc();
   } else if (nameGame === 'brain-gcd') {
-    const [gcdNum1, gcdNum2] = coupleNumbers(100);
-    console.log(`Question: ${gcdNum1}, ${gcdNum2}`);
-    correctAnswer = NOD(gcdNum1, gcdNum2).toString();
+    res = resultGcd();
   } else if (nameGame === 'brain-progression') {
-    const [massive, result] = generateEmpty(generateLine());
-    console.log(`Question: ${massive}`);
-    correctAnswer = result.toString();
+    res = resultProgression();
   } else if (nameGame === 'brain-prime') {
-    const numSimple = randomSize(2, 30);
-    console.log(`Question: ${numSimple}`);
-    correctAnswer = findSimple(numSimple);
+    res = resultPrime();
   }
-  return correctAnswer;
+  return res;
 };
 
 // Programm for app to chose question for game

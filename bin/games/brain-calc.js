@@ -1,5 +1,27 @@
-#!/usr/bin/env node
+import { coupleNumbers } from '../src/utils.js';
 
-import app from '../src/index.js';
+// random Operator
+const ranOperator = (massive) => {
+  const ranOper = Math.floor(Math.random() * massive.length);
+  return massive[ranOper];
+};
 
-app('brain-calc');
+// Random for calc game
+const randomForCalc = () => {
+  const [firstNum, secondNum] = coupleNumbers(10);
+  const operator = ranOperator(['+', '-', '*']);
+  return [firstNum, secondNum, operator];
+};
+
+// Good in calc game
+const correctCalc = (num, operator, num2) => eval(num + operator + num2);
+
+const resultCalc = () => {
+  let res = '';
+  const [num1, num2, operator] = randomForCalc(10);
+  console.log(`Question: ${num1} ${operator} ${num2}`);
+  res = correctCalc(num1, operator, num2).toString();
+  return res;
+}
+
+export default resultCalc;

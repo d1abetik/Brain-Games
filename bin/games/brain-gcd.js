@@ -1,5 +1,28 @@
-#!/usr/bin/env node
+import { coupleNumbers } from '../src/utils.js';
 
-import app from '../src/index.js';
+// Mechanics for NOD game
+const NOD = (num1, num2) => {
+  let a = num1;
+  let b = num2;
+  let res = 0;
+  while (a !== b) {
+    if (a > b) {
+      a -= b;
+      res = a;
+    } else {
+      b -= a;
+      res = b;
+    }
+  }
+  return res;
+};
 
-app('brain-gcd');
+const resultGcd = () => {
+  let res = '';
+  const [gcdNum1, gcdNum2] = coupleNumbers(100);
+  console.log(`Question: ${gcdNum1}, ${gcdNum2}`);
+  res = NOD(gcdNum1, gcdNum2).toString();
+  return res;
+}
+
+export default resultGcd;

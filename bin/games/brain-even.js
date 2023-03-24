@@ -1,5 +1,13 @@
-#!/usr/bin/env node
+import { randomNum } from '../src/utils.js';
 
-import app from '../src/index.js';
+const numberForQuest = (multi) => randomNum(multi);
 
-app('brain-even');
+const resultEven = () => {
+  let res = '';
+  const num = numberForQuest(10);
+  console.log(`Question: ${num}`);
+  res = num % 2 === 0 ? 'yes' : 'no';
+  return res;
+}
+
+export default resultEven;
