@@ -72,7 +72,7 @@ const app = (game) => {
       return console.log(`Let's try again, ${char}!`);
     }
   }
-  return console.log(`Congratulations, ${char}`);
+  return console.log(`Congratulations, ${char}!`);
 };
 
 export default app;
