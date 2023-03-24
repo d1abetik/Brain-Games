@@ -21,7 +21,7 @@ const generateEmpty = (massive) => {
 
   const hiddenMassive = [];
 
-  for (let x = 0; i < massive.length; i += 1) {
+  for (let x = 0; x < massive.length; x += 1) {
     if (massive[x] === result) {
       hiddenMassive.push('..');
     } else {
