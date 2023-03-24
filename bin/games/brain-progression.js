@@ -43,7 +43,7 @@ const resultProgression = () => {
     }
   }
   console.log(`Question: ${stroke}`);
-  res = result.toString();
+  res = result;
   return res;
 };
 

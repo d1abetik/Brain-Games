@@ -65,7 +65,7 @@ const app = (game) => {
   for (let i = 0; i < 3; i += 1) {
     const res = whichResult(game);
     const userAnswer = readlineSync.question('Answer: ');
-    if (userAnswer === res) {
+    if (userAnswer === res.toString()) {
       console.log('Correct!');
     } else {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${res}.`);
