@@ -32,11 +32,19 @@ const generateEmpty = (massive) => {
 };
 
 const resultProgression = () => {
-  let res = '';
   const [massive, result] = generateEmpty(generateLine());
-  console.log(`Question: ${massive}`);
+  let res = '';
+  let stroke = '';
+  for (let i = 0; i < massive.length; i += 1) {
+    if (i === massive.length - 1) {
+      stroke += `${massive[i]}`
+    } else {
+      stroke += `${massive[i]} `;
+    }
+  }
+  console.log(`Question: ${stroke}`);
   res = result.toString();
   return res;
-}
+};
 
 export default resultProgression;
