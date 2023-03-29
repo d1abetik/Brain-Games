@@ -1,4 +1,14 @@
-import { coupleNumbers } from '../src/utils.js';
+import app from '../../src/index.js';
+
+const discription = 'Find the greatest common divisor of given numbers.';
+
+const numberForQuest = (multi) => randomNum(multi);
+
+const coupleNumbers = (multi) => {
+  const num1 = numberForQuest(multi);
+  const num2 = numberForQuest(multi);
+  return [num1, num2];
+};
 
 // Mechanics for NOD game
 const NOD = (num1, num2) => {
@@ -20,12 +30,16 @@ const NOD = (num1, num2) => {
   return res;
 };
 
-const resultGcd = () => {
+const generateQuestionAnswer = () => {
   let res = '';
   const [gcdNum1, gcdNum2] = coupleNumbers(100);
-  console.log(`Question: ${gcdNum1} ${gcdNum2}`);
+  const quest = `Question: ${gcdNum1} ${gcdNum2}`;
   res = NOD(gcdNum1, gcdNum2);
-  return res;
+  return [quest, res];
 };
 
-export default resultGcd;
+const gcdGame = () => {
+  app(discription, generateQuestionAnswer());
+};
+
+export default gcdGame;

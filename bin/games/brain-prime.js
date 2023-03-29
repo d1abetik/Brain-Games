@@ -1,6 +1,9 @@
-import { randomSize } from '../src/utils.js';
+import randomSize from '../../src/utils.js';
+import app from '../../src/index.js';
 
-const findSimple = (number) => {
+const discription = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const isPrime = (number) => {
   const prime = [];
 
   for (let i = 2; i <= number; i += 1) {
@@ -8,15 +11,18 @@ const findSimple = (number) => {
       prime.push(i);
     }
   }
-  return prime.length > 1 ? 'no' : 'yes';
+  return prime.length > 1;
 };
 
-const resultPrime = () => {
-  let res = '';
+const generateQuestionAnswer = () => {
   const numSimple = randomSize(2, 30);
-  console.log(`Question: ${numSimple}`);
-  res = findSimple(numSimple);
-  return res;
+  const quest = `Question: ${numSimple}`;
+  const res = isPrime(numSimple) ? 'no' : 'yes';
+  return [quest, res];
 };
 
-export default resultPrime;
+const primeGame = () => {
+  app(discription, generateQuestionAnswer());
+};
+
+export default primeGame;

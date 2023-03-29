@@ -1,19 +1,25 @@
-import { coupleNumbers } from '../src/utils.js';
+import app from '../../src/index.js';
+import randomSize from '../../src/utils.js';
 
-// random Operator
+const discription = 'What is the result of the expression?';
+
+const coupleNumbers = () => {
+  const num1 = randomSize(0, 20);
+  const num2 = randomSize(0, 20);
+  return [num1, num2];
+};
+
 const ranOperator = (massive) => {
   const ranOper = Math.floor(Math.random() * massive.length);
   return massive[ranOper];
 };
 
-// Random for calc game
 const randomForCalc = () => {
   const [firstNum, secondNum] = coupleNumbers(10);
   const operator = ranOperator(['+', '-', '*']);
   return [firstNum, secondNum, operator];
 };
 
-// Good in calc game
 const correctCalc = (num, operator, num2) => {
   let res = 0;
   if (operator === '*') {
@@ -26,12 +32,15 @@ const correctCalc = (num, operator, num2) => {
   return res;
 };
 
-const resultCalc = () => {
-  let res = '';
+const generateQuestionAnswer = () => {
   const [num1, num2, operator] = randomForCalc(10);
-  console.log(`Question: ${num1} ${operator} ${num2}`);
-  res = correctCalc(num1, operator, num2);
-  return res;
+  const quest = `Question: ${num1} ${operator} ${num2}`;
+  const res = correctCalc(num1, operator, num2);
+  return [quest, res];
 };
 
-export default resultCalc;
+const calcGame = () => {
+  app(discription, generateQuestionAnswer());
+};
+
+export default calcGame;

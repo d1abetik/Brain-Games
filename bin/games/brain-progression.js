@@ -1,8 +1,10 @@
-import { numberForQuest, randomSize } from '../src/utils.js';
+import randomSize from '../../src/utils.js';
+import app from '../../src/index.js';
 
-// Generate Line for progression game
+const discription = 'What number is missing in the progression?';
+
 const generateLine = () => {
-  let first = numberForQuest(100);
+  let first = randomSize(0, 100);
   const randomSizeOf = randomSize(7, 13);
   const randomRange = randomSize(2, 5);
   const result = [];
@@ -14,9 +16,8 @@ const generateLine = () => {
   return result;
 };
 
-// Generate Empty slot in progression game
 const generateEmpty = (massive) => {
-  const randomEmpty = numberForQuest(massive.length);
+  const randomEmpty = randomSize(0, massive.length);
   const result = massive[randomEmpty];
 
   const hiddenMassive = [];
@@ -31,7 +32,7 @@ const generateEmpty = (massive) => {
   return [hiddenMassive, result];
 };
 
-const resultProgression = () => {
+const generateQuestionAnswer = () => {
   const [massive, result] = generateEmpty(generateLine());
   let res = '';
   let stroke = '';
@@ -42,9 +43,13 @@ const resultProgression = () => {
       stroke += `${massive[i]} `;
     }
   }
-  console.log(`Question: ${stroke}`);
+  const quest = `Question: ${stroke}`;
   res = result;
-  return res;
+  return [quest, res];
 };
 
-export default resultProgression;
+const gameProgression = () => {
+  app(discription, generateQuestionAnswer());
+};
+
+export default gameProgression;
