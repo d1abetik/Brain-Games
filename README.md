@@ -7,13 +7,15 @@
 - Далее вам нужно склонировать репозиторий командой: git clone https://github.com/d1abetik/frontend-project-44.git
 
 - Переходим к корневой директории игр: 
-## cd hexlet-project/frontend-project-44; ##
+#### cd hexlet-project/frontend-project-44; ####
 
-Чтобы установить игру вам потребуется ввести следующую последовательность команд:
-make install, sudo npm link, а дальше включить интересующую вас игру, например "brain-even" - название игры
+### Чтобы установить игру вам потребуется ввести следующую последовательность команд: ###
+- make install, 
+- sudo npm link, 
+- а дальше запустить интересующую вас игру, например "brain-even" - название игры
 
 ### Список игр для запуска: ### 
-#### >> brain-even, brain-calc, brain-gcd, brain-prime, brain-progression ####
+#### brain-even, brain-calc, brain-gcd, brain-prime, brain-progression ####
 
 Альтернативный запуск без установок (make install):
 ## make "название игры" ##
