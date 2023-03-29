@@ -32,7 +32,7 @@ const NOD = (num1, num2) => {
 const generateQuestionAnswer = () => {
   let res = '';
   const [gcdNum1, gcdNum2] = coupleNumbers(100);
-  const quest = ` ${gcdNum1} ${gcdNum2}`;
+  const quest = `${gcdNum1} ${gcdNum2}`;
   res = NOD(gcdNum1, gcdNum2);
   return [quest, res];
 };
