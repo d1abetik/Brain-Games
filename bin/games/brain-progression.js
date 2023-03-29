@@ -43,13 +43,11 @@ const generateQuestionAnswer = () => {
       stroke += `${massive[i]} `;
     }
   }
-  const quest = `Question: ${stroke}`;
+  const quest = `${stroke}`;
   res = result;
   return [quest, res];
 };
 
-const gameProgression = () => {
-  app(discription, generateQuestionAnswer());
-};
+const gameProgression = () => app(discription, generateQuestionAnswer());
 
 export default gameProgression;

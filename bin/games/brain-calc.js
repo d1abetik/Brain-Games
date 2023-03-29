@@ -34,13 +34,11 @@ const correctCalc = (num, operator, num2) => {
 
 const generateQuestionAnswer = () => {
   const [num1, num2, operator] = randomForCalc(10);
-  const quest = `Question: ${num1} ${operator} ${num2}`;
+  const quest = `${num1} ${operator} ${num2}`;
   const res = correctCalc(num1, operator, num2);
   return [quest, res];
 };
 
-const calcGame = () => {
-  app(discription, generateQuestionAnswer());
-};
+const calcGame = () => app(discription, generateQuestionAnswer());
 
 export default calcGame;

@@ -7,7 +7,7 @@ const app = (dis, generateQuestionAnswer) => {
   console.log(dis);
   for (let i = 0; i < 3; i += 1) {
     const [quest, answer] = generateQuestionAnswer;
-    console.log(quest);
+    console.log(`Question: ${quest}`);
     const userAnswer = readlineSync.question('Answer: ');
     if (userAnswer !== answer.toString()) {
       console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${answer}.`);
