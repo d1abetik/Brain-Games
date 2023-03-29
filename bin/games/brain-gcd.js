@@ -37,6 +37,6 @@ const generateQuestionAnswer = () => {
   return [quest, res];
 };
 
-const gcdGame = () => app(discription, generateQuestionAnswer());
+const gcdGame = () => app(discription, generateQuestionAnswer);
 
 export default gcdGame;

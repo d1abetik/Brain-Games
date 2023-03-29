@@ -48,6 +48,6 @@ const generateQuestionAnswer = () => {
   return [quest, res];
 };
 
-const gameProgression = () => app(discription, generateQuestionAnswer());
+const gameProgression = () => app(discription, generateQuestionAnswer);
 
 export default gameProgression;

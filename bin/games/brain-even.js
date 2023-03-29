@@ -11,6 +11,6 @@ const generateQuestionAnswer = () => {
   return [quest, res];
 };
 
-const evenGame = () => app(discription, generateQuestionAnswer());
+const evenGame = () => app(discription, generateQuestionAnswer);
 
 export default evenGame;

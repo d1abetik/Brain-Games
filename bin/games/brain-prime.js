@@ -19,6 +19,6 @@ const generateQuestionAnswer = () => {
 
 const discription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const primeGame = () => app(discription, generateQuestionAnswer());
+const primeGame = () => app(discription, generateQuestionAnswer);
 
 export default primeGame;
