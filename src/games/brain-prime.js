@@ -1,5 +1,5 @@
-import randomSize from '../../src/utils.js';
-import app from '../../src/index.js';
+import randomSize from '../utils.js';
+import app from '../index.js';
 
 const isPrime = (number) => {
   const prime = [];
@@ -12,9 +12,9 @@ const isPrime = (number) => {
 };
 
 const generateQuestionAnswer = () => {
-  const quest = randomSize(2, 30);
-  const res = isPrime(quest) ? 'no' : 'yes';
-  return [quest, res];
+  const question = randomSize(2, 30);
+  const result = isPrime(question) ? 'no' : 'yes';
+  return [question, result];
 };
 
 const discription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
